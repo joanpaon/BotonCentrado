@@ -15,9 +15,8 @@
  */
 package org.japo.java.forms;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,6 +27,7 @@ import org.japo.java.events.AEM;
  * @author José A. Pacheco Ondoño - joanpaon@gmail.com
  */
 public class GUI extends JFrame {
+
     // Tamaño de la ventana
     public static final int VENTANA_ANC = 300;
     public static final int VENTANA_ALT = 200;
@@ -53,27 +53,25 @@ public class GUI extends JFrame {
 
         // Gestor Eventos de Accion
         AEM aem = new AEM(this);
-        
+
         // Otros componentes
         JButton btnBoton = new JButton();
-        btnBoton.setText("Aceptar");
+        btnBoton.setText("Terminar");
         btnBoton.setFont(f);
         btnBoton.addActionListener(aem);
-        
+
         // Panel Principal
         JPanel pnlPpal = new JPanel();
-//        pnlPpal.setLayout(new BorderLayout());
-//        pnlPpal.add(btnBoton, BorderLayout.CENTER);
-        pnlPpal.setLayout(new FlowLayout(FlowLayout.CENTER));
+        pnlPpal.setLayout(new GridBagLayout());
         pnlPpal.add(btnBoton);
-        
+
         // Ventana principal
         setTitle("Botón Centrado");
         setContentPane(pnlPpal);
         setResizable(false);
         setSize(VENTANA_ANC, VENTANA_ALT);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     // Inicialización antes del IGU
