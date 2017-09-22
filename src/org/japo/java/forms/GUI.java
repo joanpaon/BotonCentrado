@@ -17,10 +17,12 @@ package org.japo.java.forms;
 
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.japo.java.events.AEM;
+import org.japo.java.libraries.UtilesSwing;
 
 /**
  *
@@ -28,71 +30,62 @@ import org.japo.java.events.AEM;
  */
 public class GUI extends JFrame {
 
-    // Tamaño de la ventana
-    public static final int VENTANA_ANC = 300;
-    public static final int VENTANA_ALT = 200;
+    // Propiedades App
+    public static final String PRP_LOOK_AND_FEEL = "look_and_feel";
+    public static final String PRP_FAVICON = "favicon";
 
-    public GUI() {
-        // Inicialización PREVIA
-        beforeInit();
+    // Valores por Defecto
+    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_NIMBUS;
+    public static final String DEF_FAVICON = "img/favicon.png";
 
-        // Creación del interfaz
+    // Referencias
+    private Properties prp;
+    private JButton btnBoton;
+
+    // Constructor
+    public GUI(Properties prp) {
+        // Inicialización Anterior
+        initBefore(prp);
+
+        // Creación Interfaz
         initComponents();
 
-        // Inicialización POSTERIOR
-        afterInit();
+        // Inicializacion Posterior
+        initAfter();
     }
 
     // Construcción del IGU
     private void initComponents() {
-        // Fuente Personalizada
-        String nombreFuente = "Consolas";
-        int estiloFuente = Font.BOLD;
-        int tallaFuente = 20;
-        Font f = new Font(nombreFuente, estiloFuente, tallaFuente);
-
-        // Gestor Eventos de Accion
-        AEM aem = new AEM(this);
-
         // Otros componentes
-        JButton btnBoton = new JButton();
-        btnBoton.setText("Terminar");
-        btnBoton.setFont(f);
-        btnBoton.addActionListener(aem);
+        btnBoton = new JButton("Terminar");
+        btnBoton.setFont(new Font("Accent SF", Font.BOLD, 40));
+        btnBoton.addActionListener(new AEM(this));
 
         // Panel Principal
-        JPanel pnlPpal = new JPanel();
-        pnlPpal.setLayout(new GridBagLayout());
+        JPanel pnlPpal = new JPanel(new GridBagLayout());
         pnlPpal.add(btnBoton);
 
         // Ventana principal
-        setTitle("Botón Centrado");
         setContentPane(pnlPpal);
+        setTitle("Swing Manual #04");
         setResizable(false);
-        setSize(VENTANA_ANC, VENTANA_ALT);
+        setSize(500, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
-    // Inicialización antes del IGU
-    private void beforeInit() {
+    // Inicialización Anterior    
+    private void initBefore(Properties prp) {
+        // Memorizar Referencia
+        this.prp = prp;
 
+        // Establecer LnF
+        UtilesSwing.establecerLnF(prp.getProperty(PRP_LOOK_AND_FEEL, DEF_LOOK_AND_FEEL));
     }
 
-    // Inicialización después del IGU
-    private void afterInit() {
-
-    }
-
-    // Cerrar programa
-    public void terminarPrograma() {
-        // Oculta la ventana
-        setVisible(false);
-
-        // Devuelve los recursos
-        dispose();
-
-        // Cierra el programa
-        System.exit(0);
+    // Inicialización Anterior
+    private void initAfter() {
+        // Establecer Favicon
+        UtilesSwing.establecerFavicon(this, prp.getProperty(PRP_FAVICON, DEF_FAVICON));
     }
 }

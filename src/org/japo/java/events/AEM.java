@@ -1,4 +1,4 @@
-/*
+/* 
  * Copyright 2017 José A. Pacheco Ondoño - joanpaon@gmail.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +18,8 @@ package org.japo.java.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.japo.java.forms.GUI;
+import org.japo.java.libraries.UtilesApp;
+import org.japo.java.libraries.UtilesSwing;
 
 /**
  *
@@ -25,19 +27,16 @@ import org.japo.java.forms.GUI;
  */
 public class AEM implements ActionListener {
 
-    // Referencia al igu
+    // Referencia al GUI
     private final GUI gui;
 
+    // Constructor
     public AEM(GUI gui) {
         this.gui = gui;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Analizar evento
-        
-        // LLamar a algún método de GUI
-        gui.terminarPrograma();
+        UtilesSwing.terminarPrograma(gui);
     }
-
 }
