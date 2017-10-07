@@ -18,7 +18,6 @@ package org.japo.java.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.japo.java.forms.GUI;
-import org.japo.java.libraries.UtilesApp;
 import org.japo.java.libraries.UtilesSwing;
 
 /**
