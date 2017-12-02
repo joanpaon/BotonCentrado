@@ -68,7 +68,7 @@ public class GUI extends JFrame {
         // Ventana principal
         setContentPane(pnlPpal);
         setTitle("Swing Manual #04");
-        setResizable(false);
+        setResizable(true);
         setSize(500, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
