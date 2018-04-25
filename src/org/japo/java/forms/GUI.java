@@ -33,10 +33,12 @@ public class GUI extends JFrame {
     // Propiedades App
     public static final String PRP_LOOK_AND_FEEL = "look_and_feel";
     public static final String PRP_FAVICON = "favicon";
+    public static final String PRP_FUENTE = "fuente";
 
     // Valores por Defecto
-    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_NIMBUS;
+    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_WINDOWS;
     public static final String DEF_FAVICON = "img/favicon.png";
+    public static final String DEF_FUENTE = "fonts/Accent SF.ttf";
 
     // Referencias
     private Properties prp;
@@ -58,7 +60,9 @@ public class GUI extends JFrame {
     private void initComponents() {
         // Otros componentes
         btnBoton = new JButton("Terminar");
-        btnBoton.setFont(new Font("Accent SF", Font.BOLD, 40));
+        btnBoton.setFont(UtilesSwing.cargarFuente(
+                prp.getProperty(PRP_FUENTE, DEF_FUENTE)).
+                deriveFont(Font.BOLD, 40f));
         btnBoton.addActionListener(new AEM(this));
 
         // Panel Principal
@@ -83,7 +87,7 @@ public class GUI extends JFrame {
         UtilesSwing.establecerLnF(prp.getProperty(PRP_LOOK_AND_FEEL, DEF_LOOK_AND_FEEL));
     }
 
-    // Inicialización Anterior
+    // Inicialización Posterior
     private void initAfter() {
         // Establecer Favicon
         UtilesSwing.establecerFavicon(this, prp.getProperty(PRP_FAVICON, DEF_FAVICON));
