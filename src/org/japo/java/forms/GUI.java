@@ -50,7 +50,10 @@ public final class GUI extends JFrame {
 
     // Referencias
     private Properties prp;
+    
+    // Componentes
     private JButton btnBoton;
+    private JPanel pnlPpal;
 
     // Constructor
     public GUI(Properties prp) {
@@ -77,7 +80,7 @@ public final class GUI extends JFrame {
         btnBoton.addActionListener(new AEM(this));
 
         // Panel Principal
-        JPanel pnlPpal = new JPanel(new GridBagLayout());
+        pnlPpal = new JPanel(new GridBagLayout());
         pnlPpal.add(btnBoton);
 
         // Ventana principal
