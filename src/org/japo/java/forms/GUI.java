@@ -59,7 +59,6 @@ public final class GUI extends JFrame {
     private void initComponents() {
         // Botón Cierre
         btnCierre = new JButton("Terminar");
-        btnCierre.setFont(fntBoton.deriveFont(Font.BOLD, 40f));
         btnCierre.setFocusable(false);
 
         // Panel Principal
@@ -90,6 +89,9 @@ public final class GUI extends JFrame {
     private void initAfter() {
         // Establecer Favicon
         UtilesSwing.establecerFavicon(this, prp.getProperty("img_favicon_resource"));
+
+        // Botón Cierre
+        btnCierre.setFont(fntBoton.deriveFont(Font.BOLD, 40f));
 
         // Ventana Principal - Propiedades
         setTitle(prp.getProperty("form_title"));
